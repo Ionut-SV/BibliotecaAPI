@@ -8,6 +8,7 @@ const bookRoutes = require('./routes/bookRoutes');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const multer = require('multer');
 
 // Middleware
 app.use(cors({
@@ -17,7 +18,6 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Test database connection
 db.getConnection((err) => {
@@ -31,7 +31,8 @@ db.getConnection((err) => {
 // Routes
 app.use('/auth', authRoutes);
 app.use('/books', bookRoutes);
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
 
 // Global error handler
 app.use((err, req, res, next) => {

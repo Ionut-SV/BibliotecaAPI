@@ -1,4 +1,6 @@
 const db = require('../config/db');
+const path = require('path');
+const uploadsPath = path.join(__dirname, '../../uploads');
 
 // Add a new book
 exports.addBook = (req, res) => {
@@ -8,6 +10,11 @@ exports.addBook = (req, res) => {
     const sql = 'INSERT INTO TabelaCarti (titlu, autor, gen, an_publicare, editura, stoc, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
     const values = [titlu, autor, gen, an_publicare, editura, stoc, image_url];
 
+    /*console.log('Current directory:', __dirname);
+    console.log('Uploads path:', uploadsPath);
+    console.log(`Image URL: /uploads/${req.file.filename}`);
+    console.log('Uploaded file:', req.file);
+    console.log(req.file.path);*/
     db.query(sql, values, (err, result) => {
         if (err) return res.status(500).send(err);
         res.status(201).send({ message: 'Carte adaugata cu succes!', bookId: result.insertId });
@@ -62,3 +69,25 @@ exports.deleteBook = (req, res) => {
         res.send({ message: 'Carte stearsa cu succes!' });
     });
 };
+
+// Get all unique genres
+exports.getGenres = async (req, res, next) => {
+    try {
+      const [rows] = await db.execute('SELECT DISTINCT gen FROM TabelaCarti');
+      const genres = rows.map(row => row.gen);
+      res.json(genres);
+    } catch (err) {
+      next(err);
+    }
+  };
+  
+  // Get all unique authors
+  exports.getAuthors = async (req, res, next) => {
+    try {
+      const [rows] = await db.execute('SELECT DISTINCT autor FROM TabelaCarti');
+      const authors = rows.map(row => row.autor);
+      res.json(authors);
+    } catch (err) {
+      next(err);
+    }
+  };
