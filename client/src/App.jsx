@@ -6,6 +6,7 @@ import Login from './Auth/Login.jsx';
 import BookListPage from './pages/BookListPage.jsx';
 import BookUploadForm from './pages/Upload.jsx';
 import BookDetailsPage from './pages/DetailsPage.jsx';
+import BookUpdateForm from './pages/Update.jsx';
 import "./App.css";
 const App = () => {
   return (
@@ -22,11 +23,15 @@ const App = () => {
           />
           <Route
             path="/home"
-            element={<BookListPage />}
+            element={<BookListPage/>}
           />
           <Route 
             path="/book/:id"
             element={<BookDetailsPage />} 
+          />
+          <Route
+            path="/update/:id"
+            element={<BookUpdateForm/>}
           />
           <Route
             path="/"

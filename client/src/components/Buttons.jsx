@@ -25,13 +25,23 @@ const Buttons = () => {
     <div className="button-container">
       {isAuthenticated ? (
         <>
+          <Button type="primary" onClick={goHome}>
+            Acasa
+          </Button>
           {role === 'bibliotecar' && (
             <Button type="primary" onClick={handleAddBooks}>
               Adauga Carte
             </Button>
           )}
+          {role === 'membru' && (
+        <>
           <Button type="primary" onClick={goHome}>
-            Acasa
+            Cos
+          </Button>
+        </>
+      )}
+         <Button type="primary" onClick={handleLogout}>
+            Comenzi
           </Button>
           <Button type="primary" onClick={handleLogout}>
             Logout

@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: flex-start; 
     max-width: 600px;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -16,7 +16,7 @@
     justify-content: flex-end;
     margin-bottom: 40px;
     margin-top: 0;
-    margin-left:700px;
+    margin-left:675px;
   }
 
   .book-details-row {
@@ -29,7 +29,7 @@
   .book-details img {
     flex-shrink: 0;
     width: 300px; /* Increased width */
-    height:450px; /* Maintain aspect ratio */
+    height:500px; /* Maintain aspect ratio */
     border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -94,4 +94,40 @@
     width: 40px; /* Size of the basket icon */
     height: 40px;
     object-fit: contain;
+}
+
+.admin-buttons {
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  margin-top: 20px; /* Space from the price */
+}
+
+.admin-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-buttons .update-book {
+  background-color: #2196f3; /* Blue */
+  color: white;
+}
+
+.admin-buttons .update-book:hover {
+  background-color: #1e88e5; /* Darker blue on hover */
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.2);
+}
+
+.admin-buttons .delete-book {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.admin-buttons .delete-book:hover {
+  background-color: #e53935; /* Darker red on hover */
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
 }

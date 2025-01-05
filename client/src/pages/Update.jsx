@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import { notification } from 'antd'; // For notifications
-import Buttons from '../components/Buttons'; // Your button component
+import { useParams } from 'react-router-dom';
+import { notification } from 'antd'; 
+import Buttons from '../components/Buttons';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Upload.css';
 
+
 function BookUpdateForm() {
+  const { id } = useParams(); // Get the book ID from the URL
+  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+
   const [titlu, setTitlu] = useState('');
   const [autor, setAutor] = useState('');
   const [gen, setGen] = useState('');
@@ -14,10 +19,8 @@ function BookUpdateForm() {
   const [descriere, setDescriere] = useState('');
   const [pret, setPret] = useState('');
   const [image, setImage] = useState(null);
-  const { id } = useParams(); // Get the book ID from the URL
-  const history = useHistory(); // For navigation after update
 
-  // Fetch the current book data
+  // Fetch book data based on the ID
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -70,7 +73,7 @@ function BookUpdateForm() {
           description: 'Carte a fost actualizata cu succes!',
           duration: 3,
         });
-        history.push('/books'); // Navigate back to the book list page after successful update
+        navigate(`/book/${id}`); 
       } else {
         notification.error({
           message: 'Eroare',
@@ -87,107 +90,104 @@ function BookUpdateForm() {
       });
     }
   };
-
+  
   return (
     <form onSubmit={handleSubmit} className="form-container-up">
-      <div className="header-up ">
-        <Buttons />
-      </div>
-
+      <div className="header-up "><Buttons /></div>
       <div className="form-card-up">
-        <div className="form-item-up">
-          <label>Titlu:</label>
-          <input
-            type="text"
-            value={titlu}
-            onChange={(e) => setTitlu(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>Autor:</label>
-          <input
-            type="text"
-            value={autor}
-            onChange={(e) => setAutor(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>Categorie:</label>
-          <input
-            type="text"
-            value={gen}
-            onChange={(e) => setGen(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>An Publicare:</label>
-          <input
-            type="text"
-            value={an_publicare}
-            onChange={(e) => setAnPublicare(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>Editura:</label>
-          <input
-            type="text"
-            value={editura}
-            onChange={(e) => setEditura(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>Stoc:</label>
-          <input
-            type="text"
-            value={stoc}
-            onChange={(e) => setStoc(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-item-up">
-          <label>Descriere:</label>
-            <textarea
-              value={descriere}
-              onChange={(e) => setDescriere(e.target.value)}
+          <div className="form-item-up">
+            <label>Titlu:</label>
+            <input
+              type="text"
+              value={titlu}
+              onChange={(e) => setTitlu(e.target.value)}
               required
-              className="description-textarea"
             />
-        </div>
+          </div>
 
-        <div className="form-item-up">
-          <label>Pret:</label>
-          <input
-            type="text"
-            value={pret}
-            onChange={(e) => setPret(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Autor:</label>
+            <input
+              type="text"
+              value={autor}
+              onChange={(e) => setAutor(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>Imagine:</label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Categorie:</label>
+            <input
+              type="text"
+              value={gen}
+              onChange={(e) => setGen(e.target.value)}
+              required
+            />
+          </div>
 
-        <button className="button-up" type="submit">Adauga Carte</button>
+          <div className="form-item-up">
+            <label>An Publicare:</label>
+            <input
+              type="text"
+              value={an_publicare}
+              onChange={(e) => setAnPublicare(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-item-up">
+            <label>Editura:</label>
+            <input
+              type="text"
+              value={editura}
+              onChange={(e) => setEditura(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-item-up">
+            <label>Stoc:</label>
+            <input
+              type="text"
+              value={stoc}
+              onChange={(e) => setStoc(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-item-up">
+            <label>Descriere:</label>
+              <textarea
+                value={descriere}
+                onChange={(e) => setDescriere(e.target.value)}
+                required
+                className="description-textarea"
+              />
+          </div>
+
+          <div className="form-item-up">
+            <label>Pret:</label>
+            <input
+              type="text"
+              value={pret}
+              onChange={(e) => setPret(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-item-up">
+            <label>Imagine:</label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+        
+        <button className="button-up" type="submit">Salvează Modificările</button>
       </div>
     </form>
-);
+  );
 }
 
 export default BookUpdateForm;
