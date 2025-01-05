@@ -68,7 +68,7 @@ const BookDetailsPage = () => {
   return (
     <div className="book-details">
       <div className="header-button">
-        <Buttons />
+        <Buttons/>
       </div>
       <h1>{book.titlu}</h1>
       <div className="book-details-row">

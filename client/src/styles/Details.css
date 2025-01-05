@@ -14,9 +14,10 @@
   .header-button{
     display: flex;
     justify-content: flex-end;
+    width: 100%;
     margin-bottom: 40px;
     margin-top: 0;
-    margin-left:675px;
+    margin-left:450px;
   }
 
   .book-details-row {
