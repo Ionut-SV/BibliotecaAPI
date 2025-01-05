@@ -62,8 +62,9 @@ function BookUploadForm() {
   };
 
   return (
+    
       <form onSubmit={handleSubmit} className="form-container-up">
-        <div className="header-up ">
+        <div className="header-up">
           <Buttons />
         </div>
 

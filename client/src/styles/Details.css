@@ -11,13 +11,13 @@
     background-color: #fff;
     font-family: Arial, sans-serif;
 }
-    .header-button{
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 40px;
-        margin-top: 20px;
-        margin-right: 90%;
-    }
+  .header-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    margin-top: 0;
+    margin-left:700px;
+  }
 
   .book-details-row {
     display: flex;

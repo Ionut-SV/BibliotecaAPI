@@ -33,7 +33,7 @@ const BookDetailsPage = () => {
     <div className="book-details">
       <div className="header-button">
           <Buttons />
-        </div>
+      </div>
     <h1>{book.titlu}</h1>
     <div className="book-details-row">
       <img src={`http://localhost:5000${book.image_url}`} alt={book.titlu} />

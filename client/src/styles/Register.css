@@ -1,0 +1,10 @@
+.form-container-register{
+    margin-top:50px;
+    margin-left:500px;
+    margin-bottom:100px;
+    width: 600px; /* Set a fixed width for the card */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for aesthetics */
+    border-radius: 8px; /* Optional: Round the card edges */
+    padding: 20px; /* Optional: Internal padding */
+    background: #fff; /* Ensure a white background for the card */
+}

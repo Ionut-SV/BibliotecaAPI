@@ -1,76 +1,78 @@
-.form-container-up {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 200px;
-  }
-  
-  .header-up {
-    display: flex;
-    justify-content: flex-end; /* Align header to the left */
-    width: 100%;
-    margin-left: 470px;
-    margin-top: 0.8%;
-    margin-bottom: -40px;
-  }
-  
-  .form-card-up {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%; /* Adjust width as necessary */
-    max-width: 600px; /* Limit the width */
-    margin-bottom: 30%;
-    
-    /* Limit the height of the card */
-    max-height: 80vh; 
-    
-    /* Enable scrolling within the card if content overflows */
-    overflow-y: auto;
+html, body {
+  height: 100%; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+  margin: 0;
+  padding: 0;
+  background: #cbdbff; 
 }
-  
-  .form-item-up {
-    margin-bottom: 15px;
-  }
-  
-  .form-item-up label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-item-up input {
-    width: 90%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-  }
 
-  .description-textarea {
-    width: 94%;  /* Adjust width as needed */
-    height: 80px;  /* Fixed height for 4 rows */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 14px;
-    resize: none;  /* Prevent resizing */
-    overflow-y: auto;  /* Enable vertical scrolling */
-  }
+.form-container-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; 
+}
 
-  .button-up{
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .button-up:hover {
-    background-color: #45a049;
-  }
-  
-  
+.header-up {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 1.3%;
+  margin-bottom: -40px;
+  margin-right:60px;
+}
+
+.form-card-up {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%; 
+  max-width: 600px; 
+  margin-top: 1%; 
+  box-sizing: border-box; 
+}
+
+.form-item-up {
+  margin-bottom: 15px;
+}
+
+.form-item-up label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-item-up input {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.description-textarea {
+  width: 94%; /* Adjust width */
+  height: 80px; /* Fixed height for 4 rows */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  resize: none; /* Prevent resizing */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.button-up {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-up:hover {
+  background-color: #45a049;
+}

@@ -2,8 +2,9 @@
   display: grid;
   grid-template-columns: repeat(4, 4fr); /* Creates a responsive grid */
   gap: 20px; /* Adds space between cards */
-  margin: 30px;
-  margin-right: 160px;
+  margin-left:10%;
+  margin-right: 10%;
+  padding: 40px;
 }
 
 .book-card-link {

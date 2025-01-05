@@ -2,6 +2,7 @@ import React from 'react';
 import { Alert, Card, Input, Form, Spin, Typography, Button } from 'antd';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useLogin from '../hooks/useLogin';
+import '../styles/Login.css';
 
 const Login = () => {
     const { error, loading, loginUser } = useLogin();
@@ -19,7 +20,7 @@ const Login = () => {
     };
 
     return (
-        <Card className="form-container">
+        <Card className="form-container-login">
             <div className="form-content">
                 <Typography.Title level={3} strong className="title">
                     Log in

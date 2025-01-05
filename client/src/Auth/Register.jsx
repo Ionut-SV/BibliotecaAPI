@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert, Card, Input, Form, Spin, Typography, Button, Select } from 'antd';
 import { Link } from 'react-router-dom';
 import useSignup from '../hooks/useSignup';
-
+import '../styles/Register.css';
 const Register = () => {
     const { loading, error, registerUser } = useSignup();
 
@@ -11,7 +11,7 @@ const Register = () => {
     };
 
     return (
-        <Card className="form-container">
+        <Card className="form-container-register">
             <div className="flex-container">
                 {/* form */}
                 <div className="flex-item">

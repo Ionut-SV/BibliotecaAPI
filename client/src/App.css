@@ -1,28 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
-*{
-  font-family:'Poppins', sans-serif;
+
+/* Global Styles */
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+
+/* Ensure body handles scrolling */
+html, body {
+  height: 100%; /* Make sure the page height is 100% */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
   background: #cbdbff;
 }
 
-/*form*/
-.form-containter{
-  width:1000px;
+body {
+  display: flex;
+  flex-direction: column; /* Allow vertical stacking */
+  justify-content: flex-start; /* Start at the top */
 }
 
+/* Root container styling */
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column; /* Content grows vertically */
+}
+
+/* Form container */
+.form-containter {
+  width: 1000px;
+}
+
+/* Center title inside the form */
 .title {
   text-align: center;
 }
 
+/* Buttons take full width */
 .btn {
   width: 100%;
 }
 
-.alert{
+/* Adjust alert margins */
+.alert {
   margin-bottom: 1.5rem;
 }
