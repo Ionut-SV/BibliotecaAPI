@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { AuthProvider } from './contexts/AuthContext';
 import Register from './Auth/Register.jsx';
 import Login from './Auth/Login.jsx';
-import BookList from './components/BookList.jsx';
+import BookListPage from './pages/BookListPage.jsx';
 import "./App.css";
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
           />
           <Route
             path="/home"
-            element={<BookList />}
+            element={<BookListPage />}
           />
           <Route
             path="/"
