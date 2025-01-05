@@ -29,7 +29,7 @@ function BookUploadForm() {
     formData.append('an_publicare', an_publicare);
     formData.append('editura', editura);
     formData.append('stoc', stoc);
-    formData.append('desciere', descriere);
+    formData.append('descriere', descriere);
     formData.append('pret', pret);
 
     try {

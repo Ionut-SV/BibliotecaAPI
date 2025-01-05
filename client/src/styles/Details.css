@@ -1,0 +1,97 @@
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+    .header-button{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 40px;
+        margin-top: 20px;
+        margin-right: 90%;
+    }
+
+  .book-details-row {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 30px; /* Space between the image and the details */
+  }
+  
+  .book-details img {
+    flex-shrink: 0;
+    width: 300px; /* Increased width */
+    height:450px; /* Maintain aspect ratio */
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-details .details-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top:150px;
+  }
+  
+  .book-details h1 {
+    text-align: center; 
+    margin: 0 auto 10px; /* Auto margins horizontally center the element */
+    font-size: 28px;
+    color: #333;
+    display: block; /* Ensures it's treated as a block element for proper centering */
+}
+  
+  .book-details p {
+    margin: 5px 0;
+    color: #000000;
+    font-size: 18px;
+  }
+  
+  .book-details .price {
+    margin-top:20px; 
+    font-size: 30px; 
+    font-weight: bold;
+    color: red; 
+  }
+  
+  .book-details .description {
+    margin-top: 30px; 
+    color: #000000;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .book-details .add-to-basket {
+    margin-top: 20px;
+    margin-left: 140px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    width: 60px; /* Set a square size for the button */
+    height: 60px;
+}
+
+.book-details .add-to-basket:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.book-details .add-to-basket img {
+    width: 40px; /* Size of the basket icon */
+    height: 40px;
+    object-fit: contain;
+}

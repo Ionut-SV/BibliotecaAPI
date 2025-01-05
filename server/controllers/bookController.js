@@ -4,11 +4,11 @@ const uploadsPath = path.join(__dirname, '../../uploads');
 
 // Add a new book
 exports.addBook = (req, res) => {
-    const { titlu, autor, gen, an_publicare, editura, stoc } = req.body;
+    const { titlu, autor, gen, an_publicare, editura, stoc, descriere, pret} = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
 
-    const sql = 'INSERT INTO TabelaCarti (titlu, autor, gen, an_publicare, editura, stoc, descriere, pret, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const values = [titlu, autor, gen, an_publicare, editura, stoc, image_url];
+    const sql = 'INSERT INTO TabelaCarti (titlu, autor, gen, an_publicare, editura, stoc, descriere, pret, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [titlu, autor, gen, an_publicare, editura, stoc, descriere, pret, image_url];
 
     /*console.log('Current directory:', __dirname);
     console.log('Uploads path:', uploadsPath);
@@ -43,7 +43,7 @@ exports.getBookById = (req, res) => {
 // Update a book
 exports.updateBook = (req, res) => {
     const { id } = req.params;
-    const { titlu, autor, gen, an_publicare, editura, stoc } = req.body;
+    const { titlu, autor, gen, an_publicare, editura, stoc, descriere, pret } = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
 
     const sql = `

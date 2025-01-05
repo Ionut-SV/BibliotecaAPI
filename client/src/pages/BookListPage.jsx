@@ -171,8 +171,8 @@ const BookListPage = () => {
         {filteredBooks.length > 0 ? (
           filteredBooks.map((book) => (
             <BookCard
-              key={book.id}
-              id={book.id}
+              key={book.id_carte}
+              id={book.id_carte}
               titlu={book.titlu}
               autor={book.autor}
               categorie={book.gen}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import "../styles/BookCard.css"; // Ensure you have styles for your cards
 
 function BookCard({ id, titlu, autor, categorie, pret, image_url }) {
+  console.log('BookCard ID:', id);
   return (
     <Link to={`/book/${id}`} className="book-card-link">
       <div className="book-card">
@@ -17,7 +18,7 @@ function BookCard({ id, titlu, autor, categorie, pret, image_url }) {
           <h3>{titlu}</h3>
           <p>de {autor}</p>
           <p>Categorie: {categorie}</p>
-          {pret !== undefined && <p>Pret: {pret}</p>}
+          {pret !== undefined && <p>Pret: {pret} RON</p>}
         </div>
       </div>
     </Link>
