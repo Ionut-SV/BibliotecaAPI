@@ -179,6 +179,8 @@ const BookListPage = () => {
               an_publicare={book.an_publicare}
               editura={book.editura}
               stoc={book.stoc}
+              descriere={book.descriere}
+              pret={book.pret}
               image_url={book.image_url}
             />
           ))

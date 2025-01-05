@@ -7,7 +7,7 @@ exports.addBook = (req, res) => {
     const { titlu, autor, gen, an_publicare, editura, stoc } = req.body;
     const image_url = req.file ? `/uploads/${req.file.filename}` : null;
 
-    const sql = 'INSERT INTO TabelaCarti (titlu, autor, gen, an_publicare, editura, stoc, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO TabelaCarti (titlu, autor, gen, an_publicare, editura, stoc, descriere, pret, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
     const values = [titlu, autor, gen, an_publicare, editura, stoc, image_url];
 
     /*console.log('Current directory:', __dirname);
@@ -48,10 +48,10 @@ exports.updateBook = (req, res) => {
 
     const sql = `
         UPDATE TabelaCarti 
-        SET titlu = ?, autor = ?, gen = ?, an_publicare = ?, editura = ?, stoc = ?, image_url = IFNULL(?, image_url)
+        SET titlu = ?, autor = ?, gen = ?, an_publicare = ?, editura = ?, stoc = ?, descriere = ?, pret = ?,  image_url = IFNULL(?, image_url)
         WHERE id_carte = ?
     `;
-    const values = [titlu, autor, gen, an_publicare, editura, stoc, image_url, id];
+    const values = [titlu, autor, gen, an_publicare, editura, stoc, descriere, pret, image_url, id];
 
     db.query(sql, values, (err, result) => {
         if (err) return res.status(500).send(err);

@@ -2,15 +2,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 200px;
   }
   
   .header-up {
     display: flex;
     justify-content: flex-end; /* Align header to the left */
     width: 100%;
-    margin-left: 500px;
-    margin-top: 5%;
+    margin-left: 470px;
+    margin-top: 0.8%;
     margin-bottom: -40px;
   }
   
@@ -21,8 +21,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 60%; /* Adjust width as necessary */
     max-width: 600px; /* Limit the width */
-    margin-bottom: 10%;
-  }
+    margin-bottom: 30%;
+    
+    /* Limit the height of the card */
+    max-height: 80vh; 
+    
+    /* Enable scrolling within the card if content overflows */
+    overflow-y: auto;
+}
   
   .form-item-up {
     margin-bottom: 15px;
@@ -40,7 +46,19 @@
     border: 1px solid #ccc;
     border-radius: 20px;
   }
-  
+
+  .description-textarea {
+    width: 94%;  /* Adjust width as needed */
+    height: 80px;  /* Fixed height for 4 rows */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    resize: none;  /* Prevent resizing */
+    overflow-y: auto;  /* Enable vertical scrolling */
+  }
+
   .button-up{
     width: 100%;
     padding: 10px;

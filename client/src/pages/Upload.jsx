@@ -10,6 +10,8 @@ function BookUploadForm() {
   const [an_publicare, setAnPublicare] = useState('');
   const [editura, setEditura] = useState('');
   const [stoc, setStoc] = useState('');
+  const [descriere, setDescriere] = useState('');
+  const [pret, setPret] = useState('');
   const [image, setImage] = useState(null);
 
   const handleFileChange = (event) => {
@@ -27,6 +29,8 @@ function BookUploadForm() {
     formData.append('an_publicare', an_publicare);
     formData.append('editura', editura);
     formData.append('stoc', stoc);
+    formData.append('desciere', descriere);
+    formData.append('pret', pret);
 
     try {
       const response = await fetch('http://localhost:5000/books/add', {
@@ -58,84 +62,104 @@ function BookUploadForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form-container-up">
-      <div className="header-up ">
-        <Buttons />
-      </div>
-
-      <div className="form-card-up">
-        <div className="form-item-up">
-          <label>Titlu:</label>
-          <input
-            type="text"
-            value={titlu}
-            onChange={(e) => setTitlu(e.target.value)}
-            required
-          />
+      <form onSubmit={handleSubmit} className="form-container-up">
+        <div className="header-up ">
+          <Buttons />
         </div>
 
-        <div className="form-item-up">
-          <label>Autor:</label>
-          <input
-            type="text"
-            value={autor}
-            onChange={(e) => setAutor(e.target.value)}
-            required
-          />
-        </div>
+        <div className="form-card-up">
+          <div className="form-item-up">
+            <label>Titlu:</label>
+            <input
+              type="text"
+              value={titlu}
+              onChange={(e) => setTitlu(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>Categoorie:</label>
-          <input
-            type="text"
-            value={gen}
-            onChange={(e) => setGen(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Autor:</label>
+            <input
+              type="text"
+              value={autor}
+              onChange={(e) => setAutor(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>An Publicare:</label>
-          <input
-            type="text"
-            value={an_publicare}
-            onChange={(e) => setAnPublicare(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Categorie:</label>
+            <input
+              type="text"
+              value={gen}
+              onChange={(e) => setGen(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>Editura:</label>
-          <input
-            type="text"
-            value={editura}
-            onChange={(e) => setEditura(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>An Publicare:</label>
+            <input
+              type="text"
+              value={an_publicare}
+              onChange={(e) => setAnPublicare(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>Stoc:</label>
-          <input
-            type="text"
-            value={stoc}
-            onChange={(e) => setStoc(e.target.value)}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Editura:</label>
+            <input
+              type="text"
+              value={editura}
+              onChange={(e) => setEditura(e.target.value)}
+              required
+            />
+          </div>
 
-        <div className="form-item-up">
-          <label>Imagine:</label>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            required
-          />
-        </div>
+          <div className="form-item-up">
+            <label>Stoc:</label>
+            <input
+              type="text"
+              value={stoc}
+              onChange={(e) => setStoc(e.target.value)}
+              required
+            />
+          </div>
 
-        <button className="button-up" type="submit">Adauga Carte</button>
-      </div>
-    </form>
+          <div className="form-item-up">
+            <label>Descriere:</label>
+              <textarea
+                value={descriere}
+                onChange={(e) => setDescriere(e.target.value)}
+                required
+                className="description-textarea"
+              />
+          </div>
+
+          <div className="form-item-up">
+            <label>Pret:</label>
+            <input
+              type="text"
+              value={pret}
+              onChange={(e) => setPret(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-item-up">
+            <label>Imagine:</label>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              required
+            />
+          </div>
+
+          <button className="button-up" type="submit">Adauga Carte</button>
+        </div>
+      </form>
   );
 }
 
