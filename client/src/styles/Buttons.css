@@ -1,0 +1,10 @@
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  
+  .button-container a {
+    margin-right: 10px;
+  }

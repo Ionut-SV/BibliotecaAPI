@@ -1,8 +1,9 @@
 .book-list {
   display: grid;
-  grid-template-columns: repeat(5, 4fr); /* Creates a responsive grid */
+  grid-template-columns: repeat(4, 4fr); /* Creates a responsive grid */
   gap: 20px; /* Adds space between cards */
-  margin: 20px;
+  margin: 30px;
+  margin-right: 160px;
 }
 
 .book-card-link {
