@@ -1,20 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/BookCard.css'; // Ensure you have styles for your cards
+import "../styles/BookCard.css"; // Ensure you have styles for your cards
 
-function BookCard({ id, title, imageUrl, author, genre }) {
+function BookCard({ id, titlu, autor, categorie, an_publicare, editura, stoc, image_url }) {
   return (
     <Link to={`/book/${id}`} className="book-card-link">
       <div className="book-card">
         <div className="card-image">
-          {imageUrl && <img src={imageUrl} alt={title} />}
+          {image_url ? (
+            <img src={`http://localhost:5000${image_url}`} alt={titlu} />
+          ) : (
+            <p>No image available</p> // Placeholder text if there's no image
+          )}
         </div>
         <div className="card-content">
-          <h3>{title}</h3>
-        </div>
-        <div className="card-details">
-          <p>by {author}</p>
-          <p>Genre: {genre}</p>
+          <h3>{titlu}</h3>
+          <p>de {autor}</p>
+          <p>Categorie: {categorie}</p>
+          <p>Editura: {editura}</p>
+          <p>Anul publicarii: {an_publicare}</p>
+          {stoc !== undefined && <p>Stoc: {stoc}</p>}
         </div>
       </div>
     </Link>

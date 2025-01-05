@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/BookCard.css';
-import BookCard from '../components/BookCard';
+import BookCard from './BookCard';
+import Buttons from './Buttons'; 
 
 function BooksPage() {
   const [Books, setBooks] = useState([]);
@@ -13,7 +14,7 @@ function BooksPage() {
 
   // For storing suggestions
   const [genreSuggestions, setGenreSuggestions] = useState([]);
-  const [authorSuggestions, setAuthorSuggestions] = useState([]);
+  const [autorSuggestions, setAuthorSuggestions] = useState([]);
 
   // Fetch books from backend
   useEffect(() => {
@@ -24,11 +25,13 @@ function BooksPage() {
           const books = await response.json();
           const projectList = books.map(book => ({
             id: book.id_carte,
-            title: book.titlu,
-            description: book.gen, 
-            imageUrl: book.image_url ? `http://localhost:5000${book.image_url}` : null,
-            author: book.autor,
-            genre: book.gen,  
+            titlu: book.titlu,
+            autor: book.autor,
+            categorie: book.gen,
+            an_publicare: book.an_publicare,
+            editura: book.editura,
+            stoc: book.stoc,
+            image_url: book.image_url ? `http://localhost:5000${book.image_url}` : null 
           }));
           setBooks(projectList);
         } else {
@@ -49,33 +52,33 @@ function BooksPage() {
     
     if (query.length > 2) {
       try {
-        const response = await fetch(`http://localhost:5000/books/genres?q=${query}`);
+        const response = await fetch(`http://localhost:5000/books/categorie?q=${query}`);
         if (response.ok) {
-          const genres = await response.json();
-          setGenreSuggestions(genres.filter(genre => genre.toLowerCase().includes(query.toLowerCase())));
+          const categorie = await response.json();
+          setGenreSuggestions(categorie.filter(genre => genre.toLowerCase().includes(query.toLowerCase())));
         }
       } catch (error) {
-        console.error('Error fetching genres:', error);
+        console.error('Error fetching categorie:', error);
       }
     } else {
       setGenreSuggestions([]);
     }
   };
 
-  // Fetch author suggestions as the user types
+  // Fetch autor suggestions as the user types
   const handleAuthorSearchChange = async (event) => {
     const query = event.target.value;
     setSelectedAuthor(query);
 
     if (query.length > 2) {
       try {
-        const response = await fetch(`http://localhost:5000/books/authors?q=${query}`);
+        const response = await fetch(`http://localhost:5000/books/autor?q=${query}`);
         if (response.ok) {
-          const authors = await response.json();
-          setAuthorSuggestions(authors.filter(author => author.toLowerCase().includes(query.toLowerCase())));
+          const autor = await response.json();
+          setAuthorSuggestions(autor.filter(autor => autor.toLowerCase().includes(query.toLowerCase())));
         }
       } catch (error) {
-        console.error('Error fetching authors:', error);
+        console.error('Error fetching autor:', error);
       }
     } else {
       setAuthorSuggestions([]);
@@ -89,12 +92,12 @@ function BooksPage() {
     setAppliedAuthor(selectedAuthor);
   };
 
-  // Filter books based on applied genre, author, and the applied search query
+  // Filter books based on applied genre, autor, and the applied search query
   const filteredBooks = Books.filter((book) => {
-    const genreMatches = appliedGenre === 'all' || book.genre.toLowerCase().includes(appliedGenre.toLowerCase());
-    const authorMatches = appliedAuthor === 'all' || book.author.toLowerCase().includes(appliedAuthor.toLowerCase());
-    const searchMatches = book.title?.toLowerCase().includes(appliedQuery.toLowerCase()) ?? false;
-    return genreMatches && authorMatches && searchMatches;
+    const genreMatches = appliedGenre === 'all' || book.categorie.toLowerCase().includes(appliedGenre.toLowerCase());
+    const autorMatches = appliedAuthor === 'all' || book.autor.toLowerCase().includes(appliedAuthor.toLowerCase());
+    const searchMatches = book.titlu?.toLowerCase().includes(appliedQuery.toLowerCase()) ?? false;
+    return genreMatches && autorMatches && searchMatches;
   });
 
   return (
@@ -131,17 +134,17 @@ function BooksPage() {
           )}
         </div>
         <div className="filter">
-          <label htmlFor="author-select">Autor:</label>
+          <label htmlFor="autor-select">Autor:</label>
           <input
-            id="author-select"
+            id="autor-select"
             type="text"
             value={selectedAuthor}
             onChange={handleAuthorSearchChange}
             placeholder="Cauta un autor..."
           />
-          {authorSuggestions.length > 0 && (
+          {autorSuggestions.length > 0 && (
             <ul className="suggestions">
-              {authorSuggestions.map((suggestion, index) => (
+              {autorSuggestions.map((suggestion, index) => (
                 <li key={index} onClick={() => setSelectedAuthor(suggestion)}>
                   {suggestion}
                 </li>
@@ -156,11 +159,13 @@ function BooksPage() {
             <BookCard
               key={book.id}
               id={book.id}
-              title={book.title}
-              description={book.description}
-              imageUrl={book.imageUrl}
-              author={book.author}
-              genre={book.genre}
+              titlu={book.titlu}
+              autor={book.autor}
+              categorie={book.gen}
+              an_publicare={book.an_publicare}
+              editura= {book.editura}
+              stoc= {book.stoc}
+              image_url={book.image_url}
             />
           ))
         ) : (

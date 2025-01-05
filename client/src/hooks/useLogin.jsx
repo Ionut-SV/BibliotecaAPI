@@ -1,11 +1,13 @@
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { message } from 'antd';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useLogin = () => {
     const { login } = useAuth();
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const loginUser = async (values) => {
         try {
@@ -24,6 +26,7 @@ const useLogin = () => {
             if (res.status === 200) {
                 message.success(data.message);
                 login(data.token, data.user);
+                navigate('/home');
             } else if (res.status === 404) {
                 setError(data.message);
             } else {

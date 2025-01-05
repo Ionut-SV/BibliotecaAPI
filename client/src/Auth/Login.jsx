@@ -22,7 +22,7 @@ const Login = () => {
         <Card className="form-container">
             <div className="form-content">
                 <Typography.Title level={3} strong className="title">
-                    Sign in
+                    Log in
                 </Typography.Title>
                 <Form
                     layout="vertical"
@@ -35,15 +35,15 @@ const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your email',
+                                message: 'Te rugăm să introduci emailul',
                             },
                             {
                                 type: 'email',
-                                message: 'The input is not a valid Email!',
+                                message: 'Emailul introdus nu este valid!',
                             },
                         ]}
                     >
-                        <Input size="large" placeholder="Enter your email" />
+                        <Input size="large" placeholder="Introdu emailul tău" />
                     </Form.Item>
                     <Form.Item
                         label="Parola"
@@ -51,11 +51,11 @@ const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your password',
+                                message: 'Te rugăm să introduci parola',
                             },
                         ]}
                     >
-                        <Input.Password size="large" placeholder="Enter your password" />
+                        <Input.Password size="large" placeholder="Introdu parola ta" />
                     </Form.Item>
                     {error && (
                         <Alert
@@ -74,13 +74,13 @@ const Login = () => {
                             className="btn"
                             loading={loading}
                         >
-                            {loading ? <Spin /> : 'Sign In'}
+                            {loading ? <Spin /> : 'Log in'}
                         </Button>
                     </Form.Item>
                     <Form.Item>
                         <Link to="/register">
                             <Button size="large" className="btn">
-                                Create an Account
+                                Creaza cont
                             </Button>
                         </Link>
                     </Form.Item>
