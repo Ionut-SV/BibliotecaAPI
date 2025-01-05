@@ -4,6 +4,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Register from './Auth/Register.jsx';
 import Login from './Auth/Login.jsx';
 import BookListPage from './pages/BookListPage.jsx';
+import BookUploadForm from './pages/Upload.jsx';
 import "./App.css";
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
             path="/"
             element={<Navigate to="/login" />}
           />
+           <Route 
+            path="/add" 
+            element={<BookUploadForm />} />
         </Routes>
       </Router>
     </AuthProvider>

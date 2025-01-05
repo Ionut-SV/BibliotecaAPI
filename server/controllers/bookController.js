@@ -70,24 +70,31 @@ exports.deleteBook = (req, res) => {
     });
 };
 
-// Get all unique genres
-exports.getGenres = async (req, res, next) => {
-    try {
-      const [rows] = await db.execute('SELECT DISTINCT gen FROM TabelaCarti');
-      const genres = rows.map(row => row.gen);
-      res.json(genres);
-    } catch (err) {
-      next(err);
-    }
+// Get all unique authors
+exports.getAuthors = (req, res) => {
+    const sql = 'SELECT DISTINCT autor FROM TabelaCarti';
+    db.query(sql, (err, results) => {
+      if (err) return res.status(500).send(err);
+      if (results.length === 0) {
+        return res.status(404).send("No authors found.");
+      }
+      const authors = results.map(row => row.autor);
+      res.json(authors);
+    });
   };
   
-  // Get all unique authors
-  exports.getAuthors = async (req, res, next) => {
-    try {
-      const [rows] = await db.execute('SELECT DISTINCT autor FROM TabelaCarti');
-      const authors = rows.map(row => row.autor);
-      res.json(authors);
-    } catch (err) {
-      next(err);
-    }
+  // Get all unique genres
+  exports.getGenres = (req, res) => {
+    const sql = 'SELECT DISTINCT gen FROM TabelaCarti';
+    db.query(sql, (err, results) => {
+      if (err) return res.status(500).send(err);
+      if (results.length === 0) {
+        return res.status(404).send("No genres found.");
+      }
+      const genres = results.map(row => row.gen);
+      res.json(genres);
+    });
   };
+  
+  
+  

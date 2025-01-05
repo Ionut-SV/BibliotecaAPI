@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import '../styles/Buttons.css';
 
 const Buttons = () => {
-  const { isAuthenticated, logout } = useAuth(); // Obținem starea de autentificare
+  const { isAuthenticated, logout, role } = useAuth(); // Include role from context
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -13,12 +13,30 @@ const Buttons = () => {
     navigate('/home'); 
   };
 
+  const goHome= () => {
+    navigate('/home'); 
+  };
+
+  const handleAddBooks = () => {
+    navigate('/add'); // Navigate to the Add Books page
+  };
+
   return (
     <div className="button-container">
       {isAuthenticated ? (
-        <Button type="primary" onClick={handleLogout}>
-          Logout
-        </Button>
+        <>
+          {role === 'bibliotecar' && (
+            <Button type="primary" onClick={handleAddBooks}>
+              Adauga Carte
+            </Button>
+          )}
+          <Button type="primary" onClick={goHome}>
+            Acasa
+          </Button>
+          <Button type="primary" onClick={handleLogout}>
+            Logout
+          </Button>
+        </>
       ) : (
         <>
           <Link to="/login">

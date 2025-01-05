@@ -49,7 +49,7 @@ exports.signup = async (req, res, next) => {
 
         res.status(201).json({
             status: 'success',
-            message: `${rol === 'membru' ? 'Membru' : 'Bibliotecar'} registered successfully.`,
+            message: `${rol === 'membru' ? 'Membru' : 'Bibliotecar'} inregistrat cu succes.`,
             token,
             user: { nume, prenume, gen, email, adresa, parola},
         });
@@ -98,7 +98,7 @@ exports.login = async (req, res, next) => {
 
         res.status(200).json({
             status: 'success',
-            message: 'Login successful',
+            message: 'Logarea a avut succes',
             token,
             user: {
                 id: user.id,

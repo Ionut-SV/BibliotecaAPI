@@ -54,46 +54,57 @@ html, body {
 }
 
 .filters {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.filter {
-    display: flex;
-    flex-direction: column;
-}
-
-.filter input {
-    padding: 10px;
-    font-size: 14px;
+    display: flex;  /* Align children in a row */
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically (if needed) */
+    margin-top: 20px;  /* Optional: Add some spacing from the top */
+  }
+  
+  /* Style for each filter container */
+  .filter {
+    margin: 0 10px; /* Add spacing between the filter buttons */
+  }
+  
+  /* Filter button style */
+  .filter-button {
+    padding: 10px 20px; /* Add padding to the buttons */
+    border: 1px solid #ccc; /* Border for the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    background-color: #4CAF50  ; /* Background color */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 16px;
+  }
+  
+  .filter-button:hover {
+    background-color: #45a049; /* Lighter background on hover */
+    color: #ffffff; /* Change text color */
+  }
+  /* Dropdown menu style */
+.dropdown-menu {
+    background-color: #ffffff;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-}
-
-.suggestions {
-    list-style-type: none;
-    padding: 0;
-    margin: 5px 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    max-height: 150px;
-    overflow-y: auto;
+    border-radius: 5px;
     position: absolute;
+    z-index: 999; /* Ensure it appears above other content but below the header */
+    padding: 5px 0;
     width: 200px;
-    z-index: 10;
-}
-
-.suggestions li {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none; 
+  }
+  
+  /* Style for each item in the dropdown menu */
+  .dropdown-menu li {
     padding: 10px;
     cursor: pointer;
-}
-
-.suggestions li:hover {
-    background-color: #f0f0f0;
-}
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for dropdown items */
+  .dropdown-menu li:hover {
+    background-color: #f0f0f0; /* Lighter gray background on hover */
+    color: #333; /* Change text color for contrast */
+  }
 
 
 .button-container {
@@ -104,4 +115,14 @@ html, body {
 
 .button-container button {
     margin-right: 10px;
+}
+
+.no-results-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px; 
+  color: #333; 
+  text-align: center; 
 }
