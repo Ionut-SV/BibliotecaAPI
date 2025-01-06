@@ -96,5 +96,3 @@ exports.getAuthors = (req, res) => {
     });
   };
   
-  
-  
