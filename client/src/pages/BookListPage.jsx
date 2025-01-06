@@ -133,7 +133,7 @@ const BookListPage = () => {
         {/* Genre filter */}
         <div className="filter">
           <button className="filter-button" onClick={handleGenreButtonClick}>
-            Selecteaza Categorie: {selectedGenre || 'Toate'}
+            Categorie: {selectedGenre || 'Toate'}
           </button>
           {isGenreDropdownOpen && (
             <ul className="dropdown-menu">
@@ -150,7 +150,7 @@ const BookListPage = () => {
         {/* Author filter */}
         <div className="filter">
           <button className="filter-button" onClick={handleAuthorButtonClick}>
-            Selecteaza Autor: {selectedAuthor || 'Toti'}
+            Autor: {selectedAuthor || 'Toti'}
           </button>
           {isAuthorDropdownOpen && (
             <ul className="dropdown-menu">

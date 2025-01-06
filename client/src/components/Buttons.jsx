@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import BasketDropdown from './DropdownBasket';
 import '../styles/Buttons.css';
 
 const Buttons = () => {
@@ -18,7 +19,7 @@ const Buttons = () => {
   };
 
   const handleAddBooks = () => {
-    navigate('/add'); // Navigate to the Add Books page
+    navigate('/add');
   };
 
   return (
@@ -29,20 +30,26 @@ const Buttons = () => {
             Acasa
           </Button>
           {role === 'bibliotecar' && (
+            <>
             <Button type="primary" onClick={handleAddBooks}>
               Adauga Carte
             </Button>
+            <Button type="primary" onClick={handleLogout}>
+              Comenzi
+            </Button>
+            <Button type="primary" onClick={handleLogout}>
+              Istoric
+            </Button>
+        </>
           )}
           {role === 'membru' && (
         <>
-          <Button type="primary" onClick={goHome}>
-            Cos
+          <BasketDropdown />
+          <Button type="primary" onClick={handleLogout}>
+            Comenzile Mele
           </Button>
         </>
       )}
-         <Button type="primary" onClick={handleLogout}>
-            Comenzi
-          </Button>
           <Button type="primary" onClick={handleLogout}>
             Logout
           </Button>

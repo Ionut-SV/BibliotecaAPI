@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Details.css';
-import basketIcon from '../assets/Basket1.jpg'; 
+import basketIcon from '../assets/Basket1.jpg';
 import Buttons from '../components/Buttons';
 import { useAuth } from '../contexts/AuthContext';
+import { useBasket } from '../contexts/BasketContext'; // Import Basket Context
 import { notification } from 'antd';
 
 const BookDetailsPage = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [book, setBook] = useState(null);
-  const { role } = useAuth();
+  const { role, isAuthenticated } = useAuth();
+  const { addToBasket } = useBasket(); // Access addToBasket function from Basket Context
   const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchBookDetails() {
       try {
@@ -30,8 +33,26 @@ const BookDetailsPage = () => {
     fetchBookDetails();
   }, [id]);
 
+  const handleAddToBasket = () => {
+    if (!isAuthenticated || role !== 'membru') {
+      notification.warning({
+        message: 'Acces restricționat',
+        description: 'Doar membrii pot adăuga cărți în coș.',
+        duration: 3,
+      });
+      return;
+    }
+
+    addToBasket({ id_carte: id, titlu: book.titlu, pret: book.pret });
+    notification.success({
+      message: 'Adăugat în coș',
+      description: `${book.titlu} a fost adăugată în coș.`,
+      duration: 3,
+    });
+  };
+
   if (!book) {
-    return <p>Cartea nu a fost gasita...</p>;
+    return <p>Cartea nu a fost găsită...</p>;
   }
 
   const handleDelete = async () => {
@@ -39,7 +60,7 @@ const BookDetailsPage = () => {
       const response = await fetch(`http://localhost:5000/books/${id}`, {
         method: 'DELETE',
       });
-  
+
       if (response.ok) {
         notification.success({
           message: 'Carte Ștearsă',
@@ -47,11 +68,11 @@ const BookDetailsPage = () => {
           duration: 3,
         });
         console.log('Redirecting to /books...');
-        navigate('/home');  // Redirect to the books list or home page
+        navigate('/home'); // Redirect to the books list or home page
       } else {
         notification.error({
           message: 'Eroare',
-          description: 'Ștergerea cartii a esuat.',
+          description: 'Ștergerea cărții a eșuat.',
           duration: 3,
         });
       }
@@ -59,7 +80,7 @@ const BookDetailsPage = () => {
       console.error('Error deleting book:', error);
       notification.error({
         message: 'Eroare',
-        description: 'Ștergerea cartii a esuat.',
+        description: 'Ștergerea cărții a eșuat.',
         duration: 3,
       });
     }
@@ -68,7 +89,7 @@ const BookDetailsPage = () => {
   return (
     <div className="book-details">
       <div className="header-button">
-        <Buttons/>
+        <Buttons />
       </div>
       <h1>{book.titlu}</h1>
       <div className="book-details-row">
@@ -88,10 +109,11 @@ const BookDetailsPage = () => {
                 type="button"
                 className="delete-book"
                 onClick={handleDelete}>
-              Șterge Carte</button>
+                Șterge Carte
+              </button>
             </div>
           ) : (
-            <button className="add-to-basket">
+            <button className="add-to-basket" onClick={handleAddToBasket}>
               <img src={basketIcon} alt="Add to basket" />
             </button>
           )}
