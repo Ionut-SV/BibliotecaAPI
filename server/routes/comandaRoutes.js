@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const comandaController = require('../controllers/comandaController');
 
-// Define routes
-router.post('/add', comandaController.addComanda);
+
+router.post('/create', comandaController.createOrder);
+router.post('/add-books', comandaController.addBooksToOrder);
+router.put('/place-order', comandaController.placeOrder);
+router.put('/update-status', comandaController.updateOrderStatus);
 router.get('/', comandaController.getAllComenzi);
 router.get('/:id', comandaController.getComandaById);
 router.put('/:id', comandaController.updateComanda);
