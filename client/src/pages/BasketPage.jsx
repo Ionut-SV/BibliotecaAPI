@@ -118,7 +118,7 @@ const BasketPage = () => {
                     <img src={imageUrl} alt={title} className="basket-item-image" />
                   )}
                   <div className="details-column">
-                    <h2>{title} - {author}</h2> {/* Title and author side by side */}
+                  <h2>{title} <span className="author-name"> de {author}</span></h2> {/* Title and author side by side */}
                     <p>
                       {item.cantitate} x {price} RON
                     </p>

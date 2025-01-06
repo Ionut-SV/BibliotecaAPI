@@ -156,3 +156,12 @@
   .edit-button:hover {
     background-color: rgb(46, 187, 212);
   }
+  .details-column h2 {
+    font-size: 18px; /* Adjust the title font size */
+    font-weight: bold;
+  }
+  
+  .details-column .author-name {
+    font-size: 14px;  /* Smaller font size for author */
+    color: #888; /* Lighter color for author (adjust as necessary) */
+  }
